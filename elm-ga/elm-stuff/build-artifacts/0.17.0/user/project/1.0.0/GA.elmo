@@ -1,0 +1,10 @@
+var _user$project$GA$sendEvent = _elm_lang$core$Native_Platform.outgoingPort(
+	'sendEvent',
+	function (v) {
+		return [
+			v._0,
+			v._1,
+			(v._2.ctor === 'Nothing') ? null : v._2._0,
+			(v._3.ctor === 'Nothing') ? null : v._3._0
+		];
+	});

@@ -1,0 +1,92 @@
+var _user$project$Main$model = 0;
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$model, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$Random = function (a) {
+	return {ctor: 'Random', _0: a};
+};
+var _user$project$Main$update = F2(
+	function (message, model) {
+		var _p0 = message;
+		switch (_p0.ctor) {
+			case 'Inc':
+				var newModel = model + 1;
+				return {
+					ctor: '_Tuple2',
+					_0: newModel,
+					_1: _user$project$GA$sendEvent(
+						{
+							ctor: '_Tuple4',
+							_0: 'Buttons',
+							_1: 'Click',
+							_2: _elm_lang$core$Maybe$Just('Inc'),
+							_3: _elm_lang$core$Maybe$Just(newModel)
+						})
+				};
+			case 'Roll':
+				var cmd = _elm_lang$core$Platform_Cmd$batch(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$core$Random$generate,
+							_user$project$Main$Random,
+							A2(_elm_lang$core$Random$int, 1, 6)),
+							_user$project$GA$sendEvent(
+							{
+								ctor: '_Tuple4',
+								_0: 'Buttons',
+								_1: 'Click',
+								_2: _elm_lang$core$Maybe$Just('Roll'),
+								_3: _elm_lang$core$Maybe$Nothing
+							})
+						]));
+				return {ctor: '_Tuple2', _0: model, _1: cmd};
+			default:
+				return {ctor: '_Tuple2', _0: _p0._0, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _user$project$Main$Roll = {ctor: 'Roll'};
+var _user$project$Main$Inc = {ctor: 'Inc'};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$button,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Events$onClick(_user$project$Main$Inc)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text('Click me!')
+					])),
+				A2(
+				_elm_lang$html$Html$button,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Events$onClick(_user$project$Main$Roll)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text('Roll!')
+					])),
+				A2(
+				_elm_lang$html$Html$strong,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(model))
+					]))
+			]));
+};
+var _user$project$Main$main = {
+	main: _elm_lang$html$Html_App$program(
+		{init: _user$project$Main$init, subscriptions: _user$project$Main$subscriptions, update: _user$project$Main$update, view: _user$project$Main$view})
+};
