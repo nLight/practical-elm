@@ -1,1 +1,1 @@
-# practical-elm
+# Practical Elm
