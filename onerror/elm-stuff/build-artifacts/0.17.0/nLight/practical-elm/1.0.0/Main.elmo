@@ -1,0 +1,42 @@
+var _nLight$practical_elm$Main$model = 0;
+var _nLight$practical_elm$Main$init = {ctor: '_Tuple2', _0: _nLight$practical_elm$Main$model, _1: _elm_lang$core$Platform_Cmd$none};
+var _nLight$practical_elm$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _nLight$practical_elm$Main$update = F2(
+	function (message, model) {
+		return {ctor: '_Tuple2', _0: model + 1, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _nLight$practical_elm$Main$NoOp = {ctor: 'NoOp'};
+var _nLight$practical_elm$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$button,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Events$onClick(_nLight$practical_elm$Main$NoOp)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text('Click me!')
+					])),
+				A2(
+				_elm_lang$html$Html$strong,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(model))
+					]))
+			]));
+};
+var _nLight$practical_elm$Main$main = {
+	main: _elm_lang$html$Html_App$program(
+		{init: _nLight$practical_elm$Main$init, subscriptions: _nLight$practical_elm$Main$subscriptions, update: _nLight$practical_elm$Main$update, view: _nLight$practical_elm$Main$view})
+};

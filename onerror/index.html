@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Practical Elm: Global Error handler</title>
+</head>
+<body>
+  <div id="elm-widget"></div>
+  <script src="elm.js"></script>
+  <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        console.error("Oh no!", message);
+      }
+
+      var node = document.getElementById('elm-widget');
+      var app = Elm.Main.embed(node);
+  </script>
+</body>
+
+</html>
